@@ -1,0 +1,74 @@
+{
+    "arbitat": {
+        "start_url": "http://www.arbitat.ru",
+        "domain": "http://www.arbitat.ru"
+    },
+    "electro-torgi": {
+        "start_url": "http://www.bankrupt.electro-torgi.ru",
+        "domain": "https://bankrupt.electro-torgi.ru"
+    },
+    "utender": {
+        "start_url": "http://utender.ru/",
+        "domain": "http://utender.ru"
+    },
+    "bepspb": {
+        "start_url": "http://www.bepspb.ru/",
+        "domain": "https://www.bepspb.ru"
+    },
+    "utpl": {
+        "start_url": "http://utpl.ru",
+        "domain": "https://utpl.ru"
+    },
+    "torgibankrot": {
+        "start_url": "https://torgibankrot.ru",
+        "domain": "https://torgibankrot.ru"
+    },
+    "centerr": {
+        "start_url": "http://business.centerr.ru/public/purchases-all/",
+        "domain": "http://business.centerr.ru"
+    },
+    "zakazrf": {
+        "start_url": "http://bankrot.zakazrf.ru",
+        "domain": "http://bankrot.zakazrf.ru"
+    },
+    "propertytrade": {
+        "start_url": "http://www.propertytrade.ru",
+        "domain": "http://www.propertytrade.ru"
+    },
+    "tendergarant": {
+        "start_url": "http://www.tendergarant.com",
+        "domain": "http://www.tendergarant.com"
+    },
+    "meta-invest": {
+        "start_url": "http://www.meta-invest.ru",
+        "domain": "http://www.meta-invest.ru"
+    },
+    "gloriaservice": {
+        "start_url": "http://gloriaservice.ru",
+        "domain": "https://www.gloriaservice.ru"
+    },
+    "etp-bankrotstvo": {
+        "start_url": "http://www.etp-bankrotstvo.ru",
+        "domain": "https://etp-bankrotstvo.ru"
+    },
+    "tender.one": {
+        "start_url": "https://bankrupt.tender.one/",
+        "domain": "https://bankrupt.tender.one"
+    },
+    "uralbidin": {
+        "start_url": "http://www.uralbidin.ru",
+        "domain": "https://www.uralbidin.ru"
+    },
+    "alfalot": {
+        "start_url": "https://bankrupt.alfalot.ru/",
+        "domain": "https://bankrupt.alfalot.ru"
+    },
+    "etpu": {
+        "start_url": "http://bankrupt.etpu.ru/",
+        "domain": "http://bankrupt.etpu.ru"
+    },
+    "etpugra": {
+        "start_url": "http://etpugra.ru/",
+        "domain": "http://etpugra.ru"
+    }
+}
