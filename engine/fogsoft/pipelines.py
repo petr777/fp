@@ -18,6 +18,12 @@ class MongodbPipeline:
         if item.get('Начальная цена, руб.'):
             item['Начальная цена'] = item.pop('Начальная цена, руб.')
 
+        if item.get("Организатор торгов"):
+            item['Организатор'] = item.pop('Организатор торгов')
+
+        if item.get("Тип торга"):
+            item.pop('Тип торга')
+
         return item
 
     def get_id_lot(self, item):

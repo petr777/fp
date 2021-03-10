@@ -4,7 +4,7 @@
         "domain": "http://www.arbitat.ru"
     },
     "electro-torgi": {
-        "start_url": "http://www.bankrupt.electro-torgi.ru",
+        "start_url": "https://bankrupt.electro-torgi.ru/public/purchases-all/",
         "domain": "https://bankrupt.electro-torgi.ru"
     },
     "utender": {
