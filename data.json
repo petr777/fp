@@ -8,7 +8,7 @@
         "domain": "https://bankrupt.electro-torgi.ru"
     },
     "utender": {
-        "start_url": "http://utender.ru/",
+        "start_url": "http://utender.ru/public/purchases-all/",
         "domain": "http://utender.ru"
     },
     "bepspb": {

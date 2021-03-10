@@ -1,6 +1,5 @@
 import pymongo
 import datetime
-from urllib.parse import urlparse
 
 class MongodbPipeline:
 
@@ -20,9 +19,6 @@ class MongodbPipeline:
 
         if item.get("Организатор торгов"):
             item['Организатор'] = item.pop('Организатор торгов')
-
-        if item.get("Тип торга"):
-            item.pop('Тип торга')
 
         return item
 

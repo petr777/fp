@@ -21,7 +21,10 @@ def start(platform, start_url, slow_mo, limit_page):
 
     async def parse_table(page, platform):
         page = scrapy.Selector(text=page)
-        header_table = page.xpath('//table[@class="gridTable"]//tr[@class="gridHeader"]/td//a/text()').getall()
+        header_table = page.xpath('//table[@class="gridTable"]//tr[@class="gridHeader"]/td//text()').getall()
+        # УДАЛЯТ НЕНУЖНОЕ ЗНАЧЕНИЕ ИЗ СПИСКА
+        header_table = list(filter(('\xa0▼').__ne__, header_table))
+
         for row in page.xpath('//table[@class="gridTable"]//tr[@class="gridRow"]'):
             item = {}
             item.update({
@@ -37,11 +40,6 @@ def start(platform, start_url, slow_mo, limit_page):
                     item[name] = cleaner_text(cell.xpath('./text()').get())
 
             mongo_db.process_item(item)
-
-    async def get_current_num_page(page):
-        current_num_page = await page.query_selector(f"(//td[@class='pager']/span)[last()]")
-        current_num_page = await current_num_page.text_content()
-        print('\ncurrent_page', int(current_num_page))
 
 
     async def get_last_num_page(page):
