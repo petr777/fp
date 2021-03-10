@@ -38,19 +38,33 @@ def start(platform, start_url, slow_mo, limit_page):
 
             mongo_db.process_item(item)
 
+    async def get_current_num_page(page):
+        current_num_page = await page.query_selector(f"(//td[@class='pager']/span)[last()]")
+        current_num_page = await current_num_page.text_content()
+        print('\ncurrent_page', int(current_num_page))
+
+
+    async def get_last_num_page(page):
+        last_page = await page.query_selector(f"(//td[@class='pager']/a)[last()]")
+        last_page = await last_page.text_content()
+        if last_page == '>>':
+            return None
+        else:
+            return int(last_page)
 
     async def run(page, platform, num_page=1):
 
         print(f'\r{num_page} из {limit_page}', end="", flush=True)
+        content = await page.content()
+        last_num_page = await get_last_num_page(page)
 
-        if num_page < limit_page:
-            content = await page.content()
+        if (num_page < limit_page) and num_page + 1 != last_num_page:
             await parse_table(content, platform)
-            # TODO дописать проверрку last page пока сваливается в ошибку но все собирает норм работает
             if num_page % 10:
                 num_page += 1
                 await page.click(f"//td[@class='pager']/a[text()='{num_page}']")
                 await run(page, platform, num_page)
+
             else:
                 num_page += 1
                 await page.click(f"//td[@class='pager']/a[text()='>>']")

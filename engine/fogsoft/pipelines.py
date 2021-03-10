@@ -9,7 +9,7 @@ class MongodbPipeline:
 
     def open_spider(self):
         self.client = pymongo.MongoClient('mongodb://localhost:27017/')
-        self.db = self.client['Fogsoft']
+        self.db = self.client['FOGSOFT']
 
     def close_spider(self):
         self.client.close()
