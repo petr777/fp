@@ -14,7 +14,7 @@ def cleaner_text(content=None):
         return content
 
 
-def start(platform, start_url, slow_mo, limit_page):
+def start(platform, domain, start_url, slow_mo, limit_page):
 
     mongo_db = MongodbPipeline(platform)
     mongo_db.open_spider()
@@ -28,7 +28,9 @@ def start(platform, start_url, slow_mo, limit_page):
         for row in page.xpath('//table[@class="gridTable"]//tr[@class="gridRow"]'):
             item = {}
             item.update({
-                "platform": platform})
+                "platform"  : platform,
+                "domain"    : domain
+            })
             for i, name in enumerate(header_table):
                 cell = cleaner_text(row.xpath(f'.//td[{i + 1}]'))
                 href = cell.xpath('./a')

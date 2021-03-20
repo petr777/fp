@@ -22,8 +22,65 @@ class MongodbPipeline:
 
         return item
 
+    def data_normalization(self, item):
+
+        if item.get('№'):
+            item['procedure_url'] = item['№']['url']
+            item['procedure_id']  = item['№']['name']
+            del item['№']
+
+
+        if item.get('Торги'):
+            item['procedure_description'] = item['Торги']['name']
+            del item['Торги']
+
+
+        if item.get('№ лота'):
+            item['lot_url'] = item['№ лота']['url']
+            item['lot_id']  = item['№ лота']['name']
+            del item['№ лота']
+
+
+        if item.get('Лот'):
+            item['lot_description'] = item['Лот']['name']
+            del item['Лот']
+
+
+        if item.get('Организатор'):
+            item['organizer_url'] = item['Организатор']['url']
+            item['organizer_name']  = item['Организатор']['name']
+            del item['Организатор']
+
+
+        if item.get('Победитель'):
+            item['viner'] = item.pop('Победитель')
+
+
+        if item.get('Дата проведения'):
+            item['event_date'] = item.pop('Дата проведения')
+
+
+        if item.get('Дата окончания представления заявок'):
+            item['deadline_date'] = item.pop('Дата окончания представления заявок')
+
+
+        if item.get('Статус'):
+            item['status'] = item.pop('Статус')
+
+
+        if item.get('Тип торга'):
+            item['type_trade'] = item.pop('Тип торга')
+
+
+        if item.get("Начальная цена"):
+            item["initial_price"] = float(item['Начальная цена'].replace(' ', '').replace(',', '.'))
+            del item['Начальная цена']
+
+        return item
+
+
     def get_id_lot(self, item):
-        return item['Лот']['url'].split('/')[-2]
+        return item['lot_url'].split('/')[-2]
 
     def comparison_item(self, item, item_db):
         # Для сравнения значений из набора item_db удааяем "_id", "date_created", "date_updated"
@@ -52,6 +109,7 @@ class MongodbPipeline:
     def process_item(self, item):
         # Очищаем данные
         item = self.clean_name_item(item)
+        item = self.data_normalization(item)
         # Получаем id
         id_lot = self.get_id_lot(item)
         item['id_lot'] = id_lot

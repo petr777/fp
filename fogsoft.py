@@ -19,7 +19,8 @@ def choose_platform(platform, slow_mo, limit_page):
     click.echo(f"Limit page:".ljust(19) + str(limit_page))
     print('-------------------------------')
     start_url = trading_platform[platform]['start_url']
-    start(platform, start_url, slow_mo, limit_page)
+    domain = trading_platform[platform]['domain']
+    start(platform, domain, start_url, slow_mo, limit_page)
 
 
 if __name__ == '__main__':
